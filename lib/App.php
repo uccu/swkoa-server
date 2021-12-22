@@ -3,7 +3,6 @@
 namespace Uccu\SwKoaServer;
 
 use Uccu\SwKoaPlugin\PluginLoader;
-use Psr\Log\LoggerInterface;
 
 class App
 {
@@ -14,7 +13,7 @@ class App
     static public $config;
 
     /**
-     * @var LoggerInterface
+     * @var \Uccu\SwKoaLog\Logger
      */
     static public $logger;
 
