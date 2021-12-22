@@ -2,28 +2,13 @@
 
 namespace Uccu\SwKoaServer;
 
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerInterface;
 use Swoole\Constant;
 use Swoole\Process;
 use Swoole\Process\Manager;
 use Swoole\Process\Pool;
 
-class PoolManager extends Manager implements LoggerAwareInterface
+class PoolManager extends Manager
 {
-
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
-    /**
-     * @param LoggerInterface $logger
-     */
-    public function setLogger($logger)
-    {
-        $this->logger = $logger;
-    }
 
     public function __construct(int $msgQueueKey = 0)
     {
@@ -36,8 +21,8 @@ class PoolManager extends Manager implements LoggerAwareInterface
 
         $this->pool->on(Constant::EVENT_WORKER_START, function (Pool $pool, int $workerId) {
             Process::signal(SIGTERM, function () {
-                if (!is_null($this->logger)) {
-                    $this->logger->info("worker sigterm");
+                if (!is_null(App::$logger)) {
+                    App::$logger->info("worker sigterm");
                 } else {
                     echo "worker sigterm";
                 }
@@ -47,8 +32,8 @@ class PoolManager extends Manager implements LoggerAwareInterface
         });
 
         $this->pool->on(Constant::EVENT_WORKER_STOP, function () {
-            if (!is_null($this->logger)) {
-                $this->logger->info("worker stop");
+            if (!is_null(App::$logger)) {
+                App::$logger->info("worker stop");
             } else {
                 echo "worker stop";
             }

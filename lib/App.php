@@ -3,9 +3,20 @@
 namespace Uccu\SwKoaServer;
 
 use Uccu\SwKoaPlugin\PluginLoader;
+use Psr\Log\LoggerInterface;
 
 class App
 {
+
+    /**
+     * @var Config
+     */
+    static public $config;
+
+    /**
+     * @var LoggerInterface
+     */
+    static public $logger;
 
     public function start()
     {
