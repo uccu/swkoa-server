@@ -2,7 +2,7 @@
 
 namespace Uccu\SwKoaServer;
 
-use Uccu\SwKoaPlugin\Plugin\PluginLoader;
+use Uccu\SwKoaPlugin\PluginLoader;
 
 class App
 {
