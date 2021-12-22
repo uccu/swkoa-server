@@ -1,6 +1,6 @@
 <?php
 
-namespace Uccu\SwKoa;
+namespace Uccu\SwKoaServer;
 
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
